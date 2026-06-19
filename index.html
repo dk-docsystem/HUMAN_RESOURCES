@@ -151,13 +151,6 @@
             <div class="meta">Redigerbar version til teampbrug · Word</div>
           </div>
         </div>
-        <div class="file-item">
-          <div class="file-icon exe">EXE</div>
-          <div class="file-info">
-            <div class="name">HR_Kalender_Sync_2025.exe</div>
-            <div class="meta">Synkroniser ferieplan til Outlook · Windows</div>
-          </div>
-        </div>
       </div>
 
       <button class="btn-download" onclick="downloadAll()">
@@ -166,7 +159,7 @@
       </button>
 
       <div class="info-box">
-        <strong>Bemærk:</strong> Kør <strong>HR_Kalender_Sync_2025.exe</strong> for automatisk at importere alle feriedatoer til din Outlook-kalender. Programmet kræver, at du er logget ind med din virksomhedsbrugerkonto. Kontakt HR ved spørgsmål: <strong>hr@virksomhed.dk</strong> · int. 1100.
+        Hent ferieplanen som PDF eller redigerbar Word-fil. Kontakt HR ved spørgsmål: <strong>hr@virksomhed.dk</strong> · int. 1100.
       </div>
 
       <hr class="divider">
@@ -198,9 +191,8 @@
 <script>
 function downloadAll() {
   const files = [
-    'Ferieplan_2025_Godkendt.pdf',
-    'Ferieplan_2025_Redigerbar.docx',
-    'HR_Kalender_Sync_2025.exe'
+    'Ferieplan_2025_Godkendt.pdf',         // ← erstat med dit faktiske filnavn
+    'Ferieplan_2025_Redigerbar.docx'       // ← erstat med dit faktiske filnavn
   ];
   files.forEach((filename, i) => {
     setTimeout(() => {
